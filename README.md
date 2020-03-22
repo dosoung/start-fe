@@ -1,1 +1,2 @@
-# JavaScript lecture
+# JavaScript lectur
+ JEJU NATIONAL UNIVERSITY
