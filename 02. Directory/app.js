@@ -106,14 +106,14 @@ console.log('app.js');
 // }
 
 // console.log(gugudan());
-var result = 0
-do {
-  var sum = prompt('더할 값을 입력 해 주세요');
-  if(!sum) {
-    alert('숫자의 총 합은 : ' + result);
-    break;
-  } else {
-    result += parseInt(sum);
-  }
+// var result = 0
+// do {
+//   var sum = prompt('더할 값을 입력 해 주세요');
+//   if(!sum) {
+//     alert('숫자의 총 합은 : ' + result);
+//     break;
+//   } else {
+//     result += parseInt(sum);
+//   }
   
-}while(true)
+// }while(true)
