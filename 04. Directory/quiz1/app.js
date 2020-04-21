@@ -9,55 +9,92 @@ var todayPhoto = [
   ,{"url":"http://sports.media.daum.net/general/gallery/STARKIMYUNA/index.html","img":"http://icon.daumcdn.net/w/c/12/05/81727815537682839.jpeg","title":"&#39;교생&#39; 김연아, 스승의날에도 인기폭발","id":"20120516092003892"}
 ];
 
-var wrap = document.getElementById('wrap');
-var before = document.getElementById('before');
-var now = document.getElementById('now');
-var next = document.getElementById('next');
-var title = document.getElementById('title');
-var number = 1;
+var $wrap = document.getElementById('wrap');
+var $btnPrev = document.getElementById('prev');
+var $page = document.getElementById('page');
+var $totalpage = document.getElementById('totalpage');
+var $btnNext = document.getElementById('next');
+var $title = document.getElementById('title');
 
-//제목을 어떻게 출력 해야 할까요
-var len = todayPhoto.length/3;
+var page = 1;
+var totalpage =3;
+var listNum = Math.ceil(todayPhoto.length/totalpage);
+console.log(listNum);
 
-//올림함수
-var max = Math.ceil(len);
-
-//현재
-showImage();
-
-//다음으로
-next.addEventListener('click', function() {
-  number++;
-  if(number>max) {
-    number--;
-  }
-  showImage();
-});
-
-//이전으로
-before.addEventListener('click', function() {
-  number--;
-  if(number<1) {
-    number++;
-  }
-  showImage();
-});
-
-//이미지
-function showImage() {
-var str = '';
-var str2 = '';
-now.innerHTML = number+"/"+max;
-for(var i=(number-1)*3; i<number*3; i++){
-  if(i<todayPhoto.length) {
-  str += '<img src="'+todayPhoto[i].img+'"> &nbsp;&nbsp&nbsp&nbsp&nbsp&nbsp';
-  str2+= todayPhoto[i].title;
-  }
-  console.log(number);
-}
-wrap.innerHTML = str;
-title.innerHTML = str2;
+function prev() {
+  if(page===1) return;
+  page --;
+  showImage(page);
+  
 }
 
+function next() {
+  if (page===totalpage) return;
+  page ++;
+  showImage(page);
+}
 
+$btnNext.addEventListener('click',next);
+$btnPrev.addEventListener('click',prev);
+
+//refactoring
+function startIndex(page) {
+//   if(page === 1) return 0;
+//   if(page === 2) return 3;
+//   if(page === 3) return 6;
+    var startindex = (page-1)* listNum;
+    return startindex;
+  }
+
+function showImage(page) {
+  var startindex = startIndex(page);
+  var str ='';
+  for(var i =startindex; i<startindex+listNum; i++) {
+    if(i<todayPhoto.length) {
+    str += '<img src="' +todayPhoto[i].img + '"> ';
+    }
+  }
+
+  $wrap.innerHTML = str;
+  $page.innerHTML = page;
+  $totalpage.innerHTML = totalpage;
+
+}
+
+showImage(page);
+
+//중복되는 코드가 많으므로 refactoring
+// function printPage1() {
+//   var str ='';
+//   for(var i =0; i<3 ; i++) {
+//     str += '<img src="' +todayPhoto[i].img + '"> ';
+//   }
+
+//   $wrap.innerHTML = str;
+//   $page.innerHTML = page;
+//   $totalpage.innerHTML = totalpage;
+// }
+
+
+// function printPage2() {
+//   var str ='';
+//   for(var i =3; i<6 ; i++) {
+//     str += '<img src="' +todayPhoto[i].img + '"> ';
+//   }
+
+//   $wrap.innerHTML = str;
+//   $page.innerHTML = page;
+//   $totalpage.innerHTML = totalpage;
+// }
+
+// function printPage3() {
+//   var str ='';
+//   for(var i =6; i<8 ; i++) {
+//     str += '<img src="' +todayPhoto[i].img + '"> ';
+//   }
+
+//   $wrap.innerHTML = str;
+//   $page.innerHTML = page;
+//   $totalpage.innerHTML = totalpage;
+// 
 
