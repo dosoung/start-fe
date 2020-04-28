@@ -15,6 +15,7 @@ function randomNum() {
   return Math.floor(Math.random() *(380+1));
 }
 
+//show point and life
 function showNum() {
   $point.innerHTML = score;
   $life.innerHTML = life;
@@ -24,6 +25,7 @@ function showNum() {
   };
 }
 
+//setinterval stop
 function stop() {
   clearInterval(interval);
 }
@@ -42,6 +44,7 @@ const interval = setInterval(function randomPos(){
   }
   showNum();
 },1500);
+
 
 $bug.addEventListener('click' , (event) => {
   $bug.classList.toggle('hidden');
