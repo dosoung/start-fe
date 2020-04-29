@@ -15,23 +15,17 @@ function randomNum() {
   return Math.floor(Math.random() *(380+1));
 }
 
-//show point and life
-function showNum() {
-  $point.innerHTML = score;
-  $life.innerHTML = life;
-  if(life === 0 ) {
-    alert('game over');
-    stop();
-  };
-}
+//setinterval을 사용하여 1.5초마다 박스를 생성
+const interval = setInterval( () => randomPos() ,1500);
 
 //setinterval stop
 function stop() {
   clearInterval(interval);
 }
 
-//setinterval을 사용하여 1.5초마다 박스를 생성
-const interval = setInterval(function randomPos(){
+
+//bug랜덤하게 생성 및 점수 관련
+function randomPos(){
   leftnum = randomNum();
   rightnum = randomNum();
   $bug.style.left = leftnum+ "px";
@@ -43,7 +37,18 @@ const interval = setInterval(function randomPos(){
     life--;
   }
   showNum();
-},1500);
+}
+
+
+//show point and life
+function showNum() {
+  $point.innerHTML = score;
+  $life.innerHTML = life;
+  if(life === 0 ) {
+    alert('game over');
+    stop();
+  };
+}
 
 
 $bug.addEventListener('click' , (event) => {
