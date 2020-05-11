@@ -1,0 +1,24 @@
+{
+  "name": "start-fe",
+  "version": "1.0.0",
+  "description": "JEJU NATIONAL UNIVERSITY",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^6.8.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dosoung/start-fe.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dosoung/start-fe/issues"
+  },
+  "homepage": "https://github.com/dosoung/start-fe#readme"
+}
