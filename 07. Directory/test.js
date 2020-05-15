@@ -10,4 +10,6 @@ const obj = {
   h: "h",
   i: "i",
   j: "j",
+  h: "asd",
 };
+const asdfasd = "asdfadsfa";
